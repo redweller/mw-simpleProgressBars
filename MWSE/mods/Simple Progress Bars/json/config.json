@@ -1,0 +1,11 @@
+{
+	"enabled": true,
+	"layout": "COMPACT",
+	"logLevel": "ERROR",
+	"showTime": true,
+	"values": {},
+	"padding": 5,
+	"width": 80,
+	"xposition": 9,
+	"yposition": 900
+}

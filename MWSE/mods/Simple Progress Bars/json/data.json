@@ -1,0 +1,65 @@
+{
+	"debugModes": {
+		"TRACE": "5: TRACE",
+		"DEBUG": "4: DEBUG",
+		"INFO": "3: INFO",
+		"WARN": "2: WARN",
+		"ERROR": "1: ERROR",
+		"NONE": "0: NONE"
+	},
+
+	"debugOutput": {
+		"LOG": "MWSE.log",
+		"BOTH": "Both log & console"
+	},
+
+	"layout": {
+		"MIN": "cfg.settings.mode.minimal",
+		"COMPACT": "cfg.settings.mode.compact",
+		"LABELED": "cfg.settings.mode.labeled",
+		"MAX": "cfg.settings.mode.maximal"
+	},
+
+	"barheight": 15,
+
+	"prefix": {
+		"slot": "pref.armor",
+		"skill": "pref.skill",
+		"stat": "pref.char"
+	},
+
+	"attributes": [
+		"sAttributeStrength",
+		"sAttributeIntelligence",
+		"sAttributeWillpower",
+		"sAttributeAgility",
+		"sAttributeSpeed",
+		"sAttributeEndurance",
+		"sAttributePersonality",
+		"sAttributeLuck"
+	],
+
+	"armorSlots": {
+		"helmet": {"id": 0, "name": "slot.helmet"},
+		"cuirass": {"id": 1, "name": "slot.cuirass"},
+		"leftPauldron": {"id": 2, "name": "slot.pauldronleft"},
+		"rightPauldron": {"id": 3, "name": "slot.pauldronright"},
+		"greaves": {"id": 4, "name": "slot.greaves"},
+		"boots": {"id": 5, "name": "slot.boots"},
+		"leftGauntlet": {"id": 6, "name": "slot.gauntletleft"},
+		"rightGauntlet": {"id": 7, "name": "slot.gauntletright"},
+		"shield": {"id": 8, "name": "slot.shield"},
+		"leftBracer": {"id": 9, "name": "slot.bracerleft"},
+		"rightBracer": {"id": 10, "name": "slot.bracerright"}
+	},
+
+	"charStats": {
+		"level": {"name": "char.level", "icon": "s\\b_tx_s_levitate.dds"},
+		"encumbrance": {"name": "char.weight", "icon": "s\\b_tx_s_lock.dds"},
+		"armor": {"name": "char.armor", "icon": "s\\b_tx_s_frost_shield.dds"},
+		"armorToUnarmored": {"name": "char.armorvsunarmored", "icon": "s\\b_tx_s_shield.dds"},
+		"armorWorst": {"name": "char.armorbroken", "icon": "s\\b_tx_s_frost_shield.dds"},
+		"bounty": {"name": "char.bounty", "icon": "s\\b_tx_s_blind.dds", "range": [100, 1000, 5000]},
+		"rep": {"name": "char.reputation", "icon": "s\\b_tx_s_chameleon.dds", "range": [50, 150]}
+	}
+}
