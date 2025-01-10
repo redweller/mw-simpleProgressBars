@@ -276,7 +276,10 @@ local function registerMCMConfig()
 		label = i18n("cfg.debug.output.label"),
 		description = i18n("cfg.debug.output.description"),
 		options = getListOptions("debugOutput"),
-		variable = mwse.mcm.createTableVariable{ id = "logToConsole", table = mod.config }
+		variable = mwse.mcm.createTableVariable{ id = "logToConsole", table = mod.config },
+		callback = function(self)
+			log.setLogParam("logToConsole", self.variable.value)
+		end
 	}
 	
 	catTesting:createOnOffButton({
