@@ -170,6 +170,8 @@ local function updateUIBlock ()
 	if (mod.config.testBarShow) then
 		drawBarGraphic(cache.data["test"])
 	end
+
+	barBlock.container:getTopLevelMenu():updateLayout()
 end
 
 local function runUpdate ()
