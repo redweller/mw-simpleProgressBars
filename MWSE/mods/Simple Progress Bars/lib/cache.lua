@@ -325,8 +325,10 @@ local checkValue = {
 				required = durability,
 				reverse = true
 			})
-	
-			if (condition ~= cache[id].cur) or (timer[id].text ~= cache[id].timer) then
+
+			if (condition ~= cache[id].cur) or
+			   (durability ~= cache[id].max) or
+			   (timer[id].text ~= cache[id].timer) then
 				cache[id] = {
 					name = slot.name,
 					cur = condition,
@@ -338,7 +340,7 @@ local checkValue = {
 				}
 				this.updated = true
 			end
-	
+
 			cache[id].shown = true
 		end
 	end,
@@ -348,6 +350,7 @@ local checkValue = {
 		local result = calcStats[id](stat)
 		if (not result) then return end
 		if (result.cur ~= cache[id].cur) or
+		   (result.max ~= cache[id].max) or
 		   (result.reverseColors ~= cache[id].reverseColors) or
 		   (timer[id] and timer[id].text ~= cache[id].timer) then
 			cache[id] = result
