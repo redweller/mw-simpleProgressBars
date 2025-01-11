@@ -380,18 +380,20 @@ local function updateCache ()
 	
 	if not mcm.values then mcm.getDisplayedList() end
 
-	for n,_ in pairs(mod.config.values) do
-		local val = mcm.values[n]
-		if (val) then
-			checkValue[val.type](val.id, val.item)
-		else
-			if not configError then
-				configError = true
-				log:error("Error indexing value " .. n)
-				log:error("The mod configuration appears to be broken")
-				log:error("Consider deleting your config file!")
-			elseif mod.config.logTicks then
-				log:error("[".. this.tick .."] Can't index value " .. n)
+	for n,enabled in pairs(mod.config.values) do
+		if enabled then
+			local val = mcm.values[n]
+			if (val) then
+				checkValue[val.type](val.id, val.item)
+			else
+				if not configError then
+					configError = true
+					log:error("Error indexing value " .. n)
+					log:error("The mod configuration appears to be broken")
+					log:error("Consider deleting your config file!")
+				elseif mod.config.logTicks then
+					log:error("[".. this.tick .."] Can't index value " .. n)
+				end
 			end
 		end
 	end
