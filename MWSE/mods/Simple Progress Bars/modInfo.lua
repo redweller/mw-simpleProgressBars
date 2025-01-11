@@ -1,6 +1,6 @@
 return {
 	mod = "Simple Progress Bars",
-	version = "1.0.1",
+	version = "1.0.2",
 	author = "redweller",
 
 	description = [[
