@@ -26,14 +26,21 @@ this.init = function(MDIR)
 		log[id] = val
 	end
 
+	local getLogParam = function (self, id)
+		if (type(self) ~= "table") then id = self end
+		return log[id]
+	end
+
 	this.trace = inject("trace")
 	this.debug = inject("debug")
 	this.info = inject("info")
 	this.warn = inject("warn")
 	this.error = inject("error")
 	
-	this.setLogLevel = inject("setLogLevel")
-	this.setLogParam = setLogParam
+	this.setLevel = inject("setLogLevel")
+	this.setParam = setLogParam
+	this.getParam = getLogParam
+
 
 	if mod.id ~= MDIR then
 		log:warn("Mod ID doesn't match modInfo.lua")

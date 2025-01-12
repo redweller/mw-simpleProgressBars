@@ -125,7 +125,6 @@ local function registerMCMConfig()
 			id = "values",
 			table = mod.config,
 			converter = function(list)
-				globalTest = list
 				log:trace("Selected values " .. json.encode(table.keys(list)))
 				local trunc = {}
 				for id,enabled in pairs(list) do
@@ -178,8 +177,15 @@ local function registerMCMConfig()
 		options = getListOptions("debugModes", true),
 		variable = mwse.mcm.createTableVariable{ id = "logLevel", table = mod.config },
 		callback = function(self)
-			log:setLogLevel(self.variable.value)
+			log:setLevel(self.variable.value)
 			showHideDebugPage()
+		end,
+		postCreate = function(self)
+			if (self.selectedOption) then
+				log.debug("PageGeneral: Dropdown update from " .. self.selectedOption.value)
+				log.debug("PageGeneral: Dropdown update to " .. log.getParam("logLevel"))
+				self:selectOption(self:getOption(log.getParam("logLevel")))
+			end
 		end
 	}
 
@@ -266,8 +272,15 @@ local function registerMCMConfig()
 		options = getListOptions("debugModes", true),
 		variable = mwse.mcm.createTableVariable{ id = "logLevel", table = mod.config },
 		callback = function(self)
-			log:setLogLevel(self.variable.value)
+			log:setLevel(self.variable.value)
 			showHideDebugPage()
+		end,
+		postCreate = function(self)
+			if (self.selectedOption) then
+				log.debug("PageDebug: Dropdown update from " .. self.selectedOption.value)
+				log.debug("PageDebug: Dropdown update to " .. log.getParam("logLevel"))
+				self:selectOption(self:getOption(log.getParam("logLevel")))
+			end
 		end
 	}
 	
@@ -276,7 +289,7 @@ local function registerMCMConfig()
 		description = i18n("cfg.debug.timestamp.description"),
 		variable = mwse.mcm.createTableVariable({id = "logTimestamps", table = mod.config}),
 		callback = function(self)
-			log.setLogParam("includeTimestamp", self.variable.value)
+			log.setParam("includeTimestamp", self.variable.value)
 		end
 	})
 	
@@ -292,7 +305,7 @@ local function registerMCMConfig()
 		options = getListOptions("debugOutput"),
 		variable = mwse.mcm.createTableVariable{ id = "logToConsole", table = mod.config },
 		callback = function(self)
-			log.setLogParam("logToConsole", self.variable.value)
+			log.setParam("logToConsole", self.variable.value)
 		end
 	}
 	
