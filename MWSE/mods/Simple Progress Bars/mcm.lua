@@ -120,8 +120,22 @@ local function registerMCMConfig()
 		description = i18n("cfg.selector.description"),
 		leftListLabel = i18n("cfg.selector.left.label"),
 		rightListLabel = i18n("cfg.selector.right.label"),
-		variable = mwse.mcm.createTableVariable{id = "values", table = mod.config},
-		filters = {{label = "Value list", callback = getDisplayedList}}
+		filters = {{label = "Value list", callback = getDisplayedList}},
+		variable = mwse.mcm.createTableVariable{
+			id = "values",
+			table = mod.config,
+			converter = function(list)
+				globalTest = list
+				log:trace("Selected values " .. json.encode(table.keys(list)))
+				local trunc = {}
+				for id,enabled in pairs(list) do
+					if enabled then
+						trunc[id] = true
+					end
+				end
+				return trunc
+			end
+		}
 	}
 
 	local pageDebug = template:createSideBarPage{
